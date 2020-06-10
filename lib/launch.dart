@@ -85,11 +85,11 @@ class _LaunchScreenState extends State<LaunchScreen> {
     isGenerating = true;
     double t = 0.0;
 
-    const time = const Duration(milliseconds: 100);
+    const time = const Duration(milliseconds: 50);
     new Timer.periodic(time, (Timer timer) {
       setState(() {
-        var y = (speed * t * sin(angle)) - ((0.5 * (9.8 + ((0.8601843 * pow(speed, 2) * sinSq(angle))) / pow(radius, 2))) * pow(t, 2));
-        var x = (speed * t * cos(angle)) - ((0.5 * 0.8601843) * ((speed * cosSq(angle)) / pow(radius, 2)) * pow(t, 2));
+        var y = (speed * t * sin(angle)) - ((0.5 * (9.8 + ((0.8601843 * pow(speed, 2) * sinSq(angle))) / radius)) * pow(t, 2));
+        var x = (speed * t * cos(angle)) - ((0.5 * 0.8601843) * ((speed * cosSq(angle)) / radius) * pow(t, 2));
 
         // Check if the y dips below 0
         if (y <= 0 && t != 0) {
